@@ -1,9 +1,7 @@
 {
-  "builds": [
-    {
-      "src": "docs/.vitepress/dist/**",
-      "use": "@vercel/static"
-    }
-  ],
-  "outputDirectory": "docs/.vitepress/dist"
+  "buildCommand": "pnpm run docs:build",
+  "outputDirectory": ".vitepress/dist",
+  "installCommand": "pnpm install",
+  "framework": "vitepress",
+  "rootDirectory": "docs"
 }
