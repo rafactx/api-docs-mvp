@@ -36,7 +36,6 @@ export default defineConfig({
 
   // Configurações para melhor compatibilidade com Vercel
   ignoreDeadLinks: true,
-  outDir: '.vitepress/dist',
 
   locales: {
     pt: {
