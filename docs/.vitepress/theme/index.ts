@@ -22,6 +22,12 @@ const customTheme: Theme = {
     app.component('HeroSection', HeroSection)
     app.component('ScalarApi', ScalarApi)
     app.component('ApiCard', ApiCard)
+
+    // Configuração global de erro
+    app.config.errorHandler = (err, instance, info) => {
+      console.error('Erro global do Vue:', err)
+      console.error('Info:', info)
+    }
   }
 }
 

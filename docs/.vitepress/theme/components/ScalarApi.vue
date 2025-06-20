@@ -23,7 +23,7 @@
 
 <script setup>
 import { ApiReference } from '@scalar/api-reference'
-import { useData } from 'vitepress'
+import { inBrowser, useData } from 'vitepress'
 import { nextTick, onMounted, ref } from 'vue'
 
 const props = defineProps({
@@ -41,6 +41,8 @@ const handleError = (err) => {
 }
 
 onMounted(() => {
+  if (!inBrowser) return
+
   nextTick(() => {
     isMounted.value = true
     console.log('ScalarApi.vue montado. Tema escuro:', isDark.value)

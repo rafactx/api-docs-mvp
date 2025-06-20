@@ -11,6 +11,7 @@ temp/
 
 # Sistema
 .DS_Store
+**/.DS_Store
 Thumbs.db
 
 # Logs
@@ -41,3 +42,4 @@ docs/.vitepress/.DS_Store
 
 # Outros
 tmp/
+cache/

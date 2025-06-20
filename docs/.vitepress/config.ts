@@ -34,6 +34,10 @@ export default defineConfig({
     ['link', { rel: 'icon', href: '/favicon.svg' }],
   ],
 
+  // Configurações para melhor compatibilidade com Vercel
+  ignoreDeadLinks: true,
+  outDir: '.vitepress/dist',
+
   locales: {
     pt: {
       label: 'Português (Brasil)',
@@ -259,6 +263,16 @@ export default defineConfig({
   vite: {
     ssr: {
       noExternal: ['@scalar/api-reference', '@vueuse/motion', '@vueuse/core', 'motion-v']
+    },
+    build: {
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            'scalar-api': ['@scalar/api-reference'],
+            'vueuse': ['@vueuse/core', '@vueuse/motion']
+          }
+        }
+      }
     },
     resolve: {
       alias: {

@@ -9,6 +9,7 @@
 </template>
 
 <script setup lang="ts">
+import { inBrowser } from 'vitepress'
 import { onMounted, onUnmounted, ref } from 'vue'
 
 const containerRef = ref<HTMLElement | null>(null)
@@ -17,6 +18,8 @@ const glowRef = ref<HTMLElement | null>(null)
 let cleanup: (() => void) | null = null
 
 onMounted(() => {
+  if (!inBrowser) return
+
   const updateSpotlight = (e: MouseEvent) => {
     if (!glowRef.value || !containerRef.value) return
 

@@ -14,7 +14,10 @@
   "scripts": {
     "dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs"
+    "docs:preview": "vitepress preview docs",
+    "clean": "rm -rf docs/.vitepress/dist docs/.vitepress/cache",
+    "clean:all": "rm -rf docs/.vitepress/dist docs/.vitepress/cache node_modules pnpm-lock.yaml && pnpm install",
+    "vercel-build": "pnpm run docs:build"
   },
   "dependencies": {
     "@vueuse/core": "^13.4.0",

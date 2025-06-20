@@ -1,5 +1,39 @@
 {
   "buildCommand": "pnpm run docs:build",
   "outputDirectory": "docs/.vitepress/dist",
-  "installCommand": "pnpm install"
+  "installCommand": "pnpm install",
+  "framework": "vitepress",
+  "functions": {
+    "docs/.vitepress/dist/**/*.html": {
+      "runtime": "nodejs18.x"
+    }
+  },
+  "headers": [
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        }
+      ]
+    }
+  ]
 }
