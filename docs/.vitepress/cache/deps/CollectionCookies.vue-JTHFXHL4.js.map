@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../../node_modules/.pnpm/@scalar+api-client@2.5.9_tailwindcss@4.1.10_typescript@5.8.3/node_modules/@scalar/api-client/dist/views/Collection/CollectionCookies.vue2.js"],
+  "sourcesContent": ["import { defineComponent as o, createBlock as t, openBlock as n, withCtx as r, createTextVNode as i } from \"vue\";\nimport _ from \"../../components/ViewLayout/ViewLayoutSection.vue.js\";\nconst c = /* @__PURE__ */ o({\n  __name: \"CollectionCookies\",\n  setup(l) {\n    return (m, e) => (n(), t(_, null, {\n      title: r(() => e[0] || (e[0] = [\n        i(\"Cookies\")\n      ])),\n      _: 1\n    }));\n  }\n});\nexport {\n  c as default\n};\n"],
+  "mappings": ";;;;;;;;;;;;;;;AAEA,IAAM,IAAoB,gBAAE;AAAA,EAC1B,QAAQ;AAAA,EACR,MAAM,GAAG;AACP,WAAO,CAAC,GAAG,OAAO,UAAE,GAAG,YAAE,GAAG,MAAM;AAAA,MAChC,OAAO,QAAE,MAAM,EAAE,CAAC,MAAM,EAAE,CAAC,IAAI;AAAA,QAC7B,gBAAE,SAAS;AAAA,MACb,EAAE;AAAA,MACF,GAAG;AAAA,IACL,CAAC;AAAA,EACH;AACF,CAAC;",
+  "names": []
+}
