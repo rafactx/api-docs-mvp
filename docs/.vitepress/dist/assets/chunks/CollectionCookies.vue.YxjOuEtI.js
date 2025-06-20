@@ -1,0 +1,1 @@
+import{ax as o}from"./theme.ChnCFiOV.js";import{k as t,C as a,z as s,D as l,A as n}from"./framework.ZtjFAS4N.js";const p=t({__name:"CollectionCookies",setup(r){return(i,e)=>(s(),a(o,null,{title:l(()=>e[0]||(e[0]=[n("Cookies")])),_:1}))}});export{p as default};
