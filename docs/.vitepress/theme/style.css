@@ -16,6 +16,13 @@ h1, h2, h3, h4, h5, h6,
   font-family: var(--vp-font-family-heading);
 }
 
+.subtitle {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: var(--vp-c-text-2);
+  white-space: pre-line;
+  margin-top: var(--vp-space-md);
+}
 .highlight,
 .hero .word-span.highlight,
 .badge-highlight {

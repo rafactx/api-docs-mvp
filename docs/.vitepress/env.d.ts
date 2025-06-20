@@ -10,3 +10,8 @@ declare module 'vitepress/theme' {
   const theme: Theme
   export default theme
 }
+
+declare module '*.ts' {
+  const value: any
+  export default value
+}

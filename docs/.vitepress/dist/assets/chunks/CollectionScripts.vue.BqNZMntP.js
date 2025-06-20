@@ -1,1 +1,0 @@
-import{ax as t}from"./theme.ChnCFiOV.js";import{k as o,C as a,z as s,D as r,A as c}from"./framework.ZtjFAS4N.js";const m=o({__name:"CollectionScripts",setup(n){return(i,e)=>(s(),a(t,null,{title:r(()=>e[0]||(e[0]=[c("Scripts")])),_:1}))}});export{m as default};

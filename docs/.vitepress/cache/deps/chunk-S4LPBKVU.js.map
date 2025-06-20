@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../../../node_modules/.pnpm/@scalar+api-client@2.5.9_tailwindcss@4.1.10_typescript@5.8.3/node_modules/@scalar/api-client/dist/components/ViewLayout/ViewLayout.vue.js"],
-  "sourcesContent": ["import { defineComponent as o, createElementBlock as t, openBlock as n, normalizeProps as l, guardReactiveProps as d, unref as f, renderSlot as i } from \"vue\";\nimport { useBindCx as a } from \"@scalar/components\";\nconst u = /* @__PURE__ */ o({\n  __name: \"ViewLayout\",\n  setup(m) {\n    const { cx: e } = a();\n    return (r, s) => (n(), t(\"div\", l(d(\n      f(e)(\n        \"flex flex-col min-h-0 flex-1 *:border-t first:*:border-t-0 md:*:border-t-0 xl:overflow-hidden md:flex-row leading-3\"\n      )\n    )), [\n      i(r.$slots, \"default\")\n    ], 16));\n  }\n});\nexport {\n  u as default\n};\n"],
-  "mappings": ";;;;;;;;;;;;;;AAEA,IAAM,IAAoB,gBAAE;AAAA,EAC1B,QAAQ;AAAA,EACR,MAAM,GAAG;AACP,UAAM,EAAE,IAAI,EAAE,IAAI,UAAE;AACpB,WAAO,CAAC,GAAG,OAAO,UAAE,GAAG,mBAAE,OAAO,eAAE;AAAA,MAChC,MAAE,CAAC;AAAA,QACD;AAAA,MACF;AAAA,IACF,CAAC,GAAG;AAAA,MACF,WAAE,EAAE,QAAQ,SAAS;AAAA,IACvB,GAAG,EAAE;AAAA,EACP;AACF,CAAC;",
-  "names": []
-}

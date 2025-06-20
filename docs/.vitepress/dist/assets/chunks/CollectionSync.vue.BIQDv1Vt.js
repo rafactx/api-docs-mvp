@@ -1,1 +1,0 @@
-import{ax as t}from"./theme.ChnCFiOV.js";import{k as o,C as a,z as n,D as l,A as r}from"./framework.ZtjFAS4N.js";const p=o({__name:"CollectionSync",setup(s){return(c,e)=>(n(),a(t,null,{title:l(()=>e[0]||(e[0]=[r("Sync")])),_:1}))}});export{p as default};

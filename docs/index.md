@@ -2,34 +2,28 @@
 layout: page
 title: Redirecionando...
 ---
+<script>
+  // Este script só é relevante para o ambiente de desenvolvimento local.
+  // Na Vercel, o middleware.ts faz o redirecionamento antes desta página carregar.
+  (() => {
+    if (typeof window === 'undefined') return;
 
-<script setup>
-import { onMounted } from 'vue';
+    const supportedLocales = ['pt', 'en', 'es', 'fr'];
+    const browserLang = (navigator.language || 'pt').toLowerCase();
 
-onMounted(() => {
-  const browserLang = (navigator.language || '').toLowerCase();
-  let locale = 'pt';
+    // Encontra o melhor idioma suportado ou usa 'pt' como padrão
+    let locale = 'pt';
+    for (const lang of supportedLocales) {
+      if (browserLang.startsWith(lang)) {
+        locale = lang;
+        break;
+      }
+    }
 
-  if (browserLang.startsWith('en')) {
-    locale = 'en';
-  } else if (browserLang.startsWith('es')) {
-    locale = 'es';
-  } else if (browserLang.startsWith('fr')) {
-    locale = 'fr';
-  }
-
-  // Constrói o caminho absoluto, considerando a base do seu site VitePress.
-  // `${import.meta.env.BASE_URL}` garante que funcione mesmo se o site estiver em um subdiretório.
-  const newPath = `${import.meta.env.BASE_URL}${locale}/`;
-
-  // Usa window.location.replace() para um redirecionamento "limpo",
-  // que não adiciona a página de redirecionamento ao histórico do navegador.
-  window.location.replace(newPath);
-});
+    // Redireciona para a página inicial do idioma detectado
+    window.location.replace(`/${locale}/`);
+  })();
 </script>
-
 <style>
-:root {
-  visibility: hidden;
-}
+  :root { visibility: hidden; }
 </style>

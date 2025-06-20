@@ -2,7 +2,10 @@
   "type": "module",
   "devDependencies": {
     "@scalar/api-reference": "^1.31.15",
+    "@types/accept-language-parser": "^1.5.8",
     "@types/node": "^24.0.3",
+    "@vercel/edge": "^1.2.2",
+    "accept-language-parser": "^1.5.0",
     "typescript": "^5.8.3",
     "vite": "^6.3.5",
     "vitepress": "^1.6.3",
@@ -15,6 +18,8 @@
   },
   "dependencies": {
     "@vueuse/core": "^13.4.0",
-    "@vueuse/motion": "^2.0.0"
+    "@vueuse/motion": "^2.0.0",
+    "vue": "^3.5.17",
+    "vue-i18n": "^11.1.6"
   }
 }

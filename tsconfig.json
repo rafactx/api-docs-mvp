@@ -32,6 +32,6 @@
     "docs/**/*.d.ts",
     "docs/**/*.tsx",
     "docs/**/*.vue"
-  ],
+, "middleware.ts"  ],
   "exclude": ["node_modules", "dist"]
 }

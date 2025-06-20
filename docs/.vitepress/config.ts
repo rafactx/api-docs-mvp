@@ -1,9 +1,29 @@
 import { resolve } from 'path'
 import { defineConfig } from 'vitepress'
 
+// Reutilizáveis
+const sharedLogo = {
+  light: '/logo-involves-dark.png',
+  dark: '/logo-involves-light.png',
+  alt: 'Logo Involves'
+}
+
+const sharedFooter = {
+  copyright: `
+    Involves © 2025 · made with care by
+    <a href="https://github.com/rafactx" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 4px;">
+    <span>rafactx</span>
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 24 24" style="vertical-align: text-bottom;">
+        <path d="M12 .5C5.73.5.5 5.73.5 12c0 5.09 3.29 9.4 7.86 10.94.58.1.79-.25.79-.56v-2.15c-3.2.7-3.88-1.54-3.88-1.54-.53-1.35-1.3-1.71-1.3-1.71-1.06-.73.08-.72.08-.72 1.18.08 1.8 1.22 1.8 1.22 1.04 1.78 2.72 1.27 3.38.97.1-.75.41-1.27.75-1.56-2.56-.29-5.26-1.28-5.26-5.7 0-1.26.45-2.29 1.2-3.1-.12-.3-.52-1.5.11-3.12 0 0 .98-.31 3.2 1.19a11.1 11.1 0 0 1 5.82 0c2.22-1.5 3.2-1.19 3.2-1.19.63 1.62.23 2.82.11 3.12.75.81 1.2 1.84 1.2 3.1 0 4.43-2.7 5.41-5.28 5.69.42.36.8 1.08.8 2.18v3.23c0 .31.21.67.8.56A10.5 10.5 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5Z"/>
+      </svg>
+
+    </a>`
+}
+
 export default defineConfig({
-  title: "Involves Stage API Reference",
-  description: "Documentação Oficial do Involves Stage",
+  base: '/',
+  title: 'Involves Stage API Reference',
+  description: 'Documentação Oficial do Involves Stage',
   lang: 'pt',
   cleanUrls: true,
   lastUpdated: false,
@@ -15,17 +35,13 @@ export default defineConfig({
   ],
 
   locales: {
-    // PT-BR root
-    root: {
+    pt: {
       label: 'Português (Brasil)',
       lang: 'pt',
+      link: '/pt/',
       themeConfig: {
         siteTitle: false,
-        logo: {
-          light: '/logo-involves-dark.png',
-          dark: '/logo-involves-light.png',
-          alt: 'Logo Involves'
-        },
+        logo: sharedLogo,
         nav: [
           { text: 'Home', link: '/pt/' },
           { text: 'Guia da API', link: '/pt/intro' },
@@ -60,7 +76,7 @@ export default defineConfig({
           provider: 'local',
           options: {
             locales: {
-              'pt': {
+              pt: {
                 translations: {
                   button: {
                     buttonText: 'Buscar documentos',
@@ -84,27 +100,26 @@ export default defineConfig({
           level: [2, 3],
           label: 'Nesta página'
         },
-        footer: {
-          copyright: 'Involves © 2025 · made with care by <a href="https://github.com/rafactx" target="_blank" rel="noopener noreferrer">rafactx</a>'
-        },
+        footer: sharedFooter,
         docFooter: {
           prev: 'Página anterior',
           next: 'Próxima página'
-        }
+        },
+        socialLinks: [
+          { icon: 'instagram', link: 'https://www.instagram.com/ainvolves' },
+          { icon: 'youtube', link: 'https://www.youtube.com/@involves' },
+          { icon: 'linkedin', link: 'https://www.linkedin.com/company/involves' },
+
+        ]
       }
     },
 
     en: {
       label: 'English',
       lang: 'en',
-      link: '/en/',
       themeConfig: {
         siteTitle: false,
-        logo: {
-          light: '/logo-involves-dark.png',
-          dark: '/logo-involves-light.png',
-          alt: 'Involves Logo'
-        },
+        logo: sharedLogo,
         nav: [
           { text: 'Home', link: '/en/' },
           { text: 'API Guide', link: '/en/intro' },
@@ -132,27 +147,26 @@ export default defineConfig({
           level: [2, 3],
           label: 'On this page'
         },
-        footer: {
-          copyright: 'Involves © 2025 · made with care by <a href="https://github.com/rafactx" target="_blank" rel="noopener noreferrer">rafactx</a>'
-        },
+        footer: sharedFooter,
         docFooter: {
           prev: 'Previous page',
           next: 'Next page'
-        }
+        },
+        socialLinks: [
+          { icon: 'instagram', link: 'https://www.instagram.com/ainvolves' },
+          { icon: 'youtube', link: 'https://www.youtube.com/@involves' },
+          { icon: 'linkedin', link: 'https://www.linkedin.com/company/involves' },
+
+        ]
       }
     },
 
     es: {
       label: 'Español',
       lang: 'es',
-      link: '/es/',
       themeConfig: {
         siteTitle: false,
-        logo: {
-          light: '/logo-involves-dark.png',
-          dark: '/logo-involves-light.png',
-          alt: 'Logo Involves'
-        },
+        logo: sharedLogo,
         nav: [
           { text: 'Inicio', link: '/es/' },
           { text: 'Guía de la API', link: '/es/intro' },
@@ -180,27 +194,26 @@ export default defineConfig({
           level: [2, 3],
           label: 'En esta página'
         },
-        footer: {
-          copyright: 'Involves © 2025 · made with care by <a href="https://github.com/rafactx" target="_blank" rel="noopener noreferrer">rafactx</a>'
-        },
+        footer: sharedFooter,
         docFooter: {
           prev: 'Página anterior',
           next: 'Siguiente página'
-        }
+        },
+        socialLinks: [
+          { icon: 'instagram', link: 'https://www.instagram.com/ainvolves' },
+          { icon: 'youtube', link: 'https://www.youtube.com/@involves' },
+          { icon: 'linkedin', link: 'https://www.linkedin.com/company/involves' },
+
+        ]
       }
     },
 
     fr: {
       label: 'Français',
       lang: 'fr',
-      link: '/fr/',
       themeConfig: {
         siteTitle: false,
-        logo: {
-          light: '/logo-involves-dark.png',
-          dark: '/logo-involves-light.png',
-          alt: 'Logo Involves'
-        },
+        logo: sharedLogo,
         nav: [
           { text: 'Accueil', link: '/fr/' },
           { text: "Guide de l'API", link: '/fr/intro' },
@@ -228,13 +241,17 @@ export default defineConfig({
           level: [2, 3],
           label: 'Sur cette page'
         },
-        footer: {
-          copyright: 'Involves © 2025 · made with care by <a href="https://github.com/rafactx" target="_blank" rel="noopener noreferrer">rafactx</a>'
-        },
+        footer: sharedFooter,
         docFooter: {
           prev: 'Page précédente',
           next: 'Page suivante'
-        }
+        },
+        socialLinks: [
+          { icon: 'instagram', link: 'https://www.instagram.com/ainvolves' },
+          { icon: 'youtube', link: 'https://www.youtube.com/@involves' },
+          { icon: 'linkedin', link: 'https://www.linkedin.com/company/involves' },
+
+        ]
       }
     }
   },

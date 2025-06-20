@@ -96,9 +96,9 @@ interface Props {
 
 const props = withDefaults(defineProps<Props>(), {
   headline: 'Involves Stage API',
-  subtitle: 'A nova documentação da API do Involves Stage foi feita para desenvolvedores que querem clareza, organização e agilidade. Cada endpoint agora é explicado com contexto, exemplos reais e uma estrutura que facilita a integração do começo ao fim.',
+  subtitle: 'Transformamos a documentação da API em uma experiência mais fluida e acessível.\nCom linguagem clara e exemplos úteis, você entende rápido o que precisa fazer e ganha agilidade no processo de integração.',
   primaryButtonText: 'Conheça a API',
-  primaryButtonLink: '/pt-br/intro',
+  primaryButtonLink: '/pt/intro',
   secondaryButtonText: 'Central de Ajuda',
   secondaryButtonLink: 'https://help.involves.com/hc/pt-br',
   imageSrc: '/1440.png',
@@ -249,12 +249,14 @@ defineExpose({
 
 .subtitle {
   margin: 0 auto;
-  max-width: 36rem;
-  padding: 1rem 0;
-  font-size: 1.125rem;
+  padding: 1.25rem 0;
+  max-width: 44rem;
+  font-size: clamp(1rem, 2.2vw, 1.25rem);
   font-weight: 400;
-  color: var(--vp-c-text-2);
   line-height: 1.75;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  white-space: normal;
   opacity: 0;
   transition: opacity 0.4s ease-in-out 0.8s;
   will-change: opacity;
