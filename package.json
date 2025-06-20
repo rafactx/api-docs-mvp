@@ -13,7 +13,7 @@
   },
   "scripts": {
     "dev": "vitepress dev docs",
-    "docs:build": "vitepress build docs",
+    "docs:build": "vitepress build docs && cp _redirects docs/.vitepress/dist/",
     "docs:preview": "vitepress preview docs",
     "clean": "rm -rf docs/.vitepress/dist docs/.vitepress/cache",
     "clean:all": "rm -rf docs/.vitepress/dist docs/.vitepress/cache node_modules pnpm-lock.yaml && pnpm install",
