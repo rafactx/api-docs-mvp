@@ -1,0 +1,1 @@
+import{y as o}from"./theme.Ctjctau-.js";import{v as e,z as l,x as t}from"./framework.C3K8O85p.js";const s={},c={class:"custom-scroll flex flex-col pr-0 *:border-t *:first:border-t-0 xl:flex-row *:xl:border-t-0 *:xl:border-l *:first:xl:border-l-0"};function f(r,n){return l(),e("div",c,[t(r.$slots,"default")])}const a=o(s,[["render",f]]);export{a as x};

@@ -12,12 +12,14 @@ Este é o repositório para a documentação da API do Involves Stage, construí
 ### Instalação
 
 1. Clone o repositório:
+
    ```bash
-   git clone <URL_DO_SEU_REPOSITORIO>
+   git clone https://github.com/rafactx/api-docs-mvp
    cd api-docs-mvp
    ```
 
 2. Instale as dependências:
+
    ```bash
    pnpm install
    ```
@@ -46,5 +48,3 @@ O deploy deste projeto na Vercel é simples e rápido.
 A Vercel irá automaticamente detectar que é um projeto VitePress e aplicar as configurações corretas na maioria dos casos.
 
 ---
-
-Feito com ❤️ por [Involves](https://www.involves.com/).
