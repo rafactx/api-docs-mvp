@@ -1,53 +1,45 @@
 export default function ({ router }: any) {
   if (typeof window === 'undefined') return
 
-  // Configuração de tema automático baseado no sistema operacional
+  // --- Tema dinâmico de acordo com o sistema operacional ---
   const prefersDark = window.matchMedia('(prefers-color-scheme: dark)')
   const html = document.documentElement
 
-  // Função para aplicar o tema
   const applyTheme = (isDark: boolean) => {
-    if (isDark) {
-      html.classList.add('dark')
-    } else {
-      html.classList.remove('dark')
-    }
+    html.classList.toggle('dark', isDark)
   }
 
-  // Aplicar tema inicial
   applyTheme(prefersDark.matches)
 
-  // Escutar mudanças no tema do sistema
-  prefersDark.addEventListener('change', (e) => {
-    applyTheme(e.matches)
-  })
+  // Garante que o listener só é adicionado uma vez por sessão (evita duplicidade com HMR)
+  if (!(window as any).__vp_dark_listener) {
+    prefersDark.addEventListener('change', (e) => applyTheme(e.matches))
+    ;(window as any).__vp_dark_listener = true
+  }
 
-  // Configuração de redirecionamento de idioma
-  const supportedLocales = ['pt-br', 'en', 'es', 'fr']
-  const defaultLocale = 'pt-br'
+  // --- Idiomas suportados e idioma padrão ---
+  const supportedLocales = ['pt', 'en', 'es', 'fr']
+  const defaultLocale = 'pt'
 
-  router.onBeforeRouteChange((to: string) => {
-    // Se a rota já começa com um locale suportado, não faz nada
-    if (supportedLocales.some(locale => to.startsWith(`/${locale}`))) {
-      return
-    }
+  const getLocaleRedirect = (pathname: string): string | null => {
+    // Se já está em um locale, não faz nada
+    if (supportedLocales.some(locale => pathname.startsWith(`/${locale}`))) return null
 
-    // Obtém o idioma do navegador e faz o mapeamento necessário
+    // Detecta o idioma do navegador
     const browserLang = navigator.language.toLowerCase()
     let redirectLocale = defaultLocale
+    if (browserLang.startsWith('pt')) redirectLocale = 'pt'
+    else if (browserLang.startsWith('en')) redirectLocale = 'en'
+    else if (browserLang.startsWith('es')) redirectLocale = 'es'
+    else if (browserLang.startsWith('fr')) redirectLocale = 'fr'
 
-    // Mapeia o idioma do navegador para os locales suportados
-    if (browserLang.startsWith('pt')) {
-      redirectLocale = 'pt-br'
-    } else if (browserLang.startsWith('en')) {
-      redirectLocale = 'en'
-    } else if (browserLang.startsWith('es')) {
-      redirectLocale = 'es'
-    } else if (browserLang.startsWith('fr')) {
-      redirectLocale = 'fr'
-    }
+    // Retorna path correto com locale
+    return `/${redirectLocale}${pathname === '/' ? '/' : pathname}`
+  }
 
-    // Redireciona para o idioma apropriado
-    return `/${redirectLocale}${to}`
+  // --- Navegação SPA: autodetecta idioma caso o user tente acessar rota sem locale ---
+  router.onBeforeRouteChange((to: string) => {
+    const localeRedirect = getLocaleRedirect(to)
+    if (localeRedirect) return localeRedirect
   })
 }

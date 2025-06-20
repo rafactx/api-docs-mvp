@@ -1,28 +1,21 @@
 <template>
-  <div class="api-card">
-    <div class="api-card-header">
-      <div class="api-card-buttons">
-        <div class="api-card-button api-card-button-red">
-          <div class="button-inner"></div>
-        </div>
-        <div class="api-card-button api-card-button-yellow">
-          <div class="button-inner"></div>
-        </div>
-        <div class="api-card-button api-card-button-green">
-          <div class="button-inner"></div>
-        </div>
+  <div class="api-macos-window">
+    <div class="api-macos-header">
+      <div class="macos-buttons">
+        <div class="macos-btn macos-btn-red"></div>
+        <div class="macos-btn macos-btn-yellow"></div>
+        <div class="macos-btn macos-btn-green"></div>
       </div>
-      <span class="api-card-title">{{ title }}</span>
+      <span class="api-macos-title">{{ title }}</span>
     </div>
-
-    <div class="api-card-content">
+    <div class="api-macos-content">
       <div
         v-for="(item, index) in items"
         :key="index"
-        class="api-card-item"
+        class="api-macos-row"
       >
-        <span class="api-card-key" :class="item.color">{{ item.key }}</span>
-        <span class="api-card-value">
+        <span class="api-macos-key" :class="item.color">{{ item.key }}</span>
+        <span class="api-macos-value">
           <span v-html="item.description"></span>
         </span>
       </div>
@@ -38,243 +31,134 @@ defineProps({
   },
   items: {
     type: Array,
-    required: true,
-    // Cada item deve ter: { key, description, color }
+    required: true
   }
 })
 </script>
 
 <style scoped>
-.api-card {
-  background: var(--vp-c-bg);
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 10px;
+.api-macos-window {
+  /* Glassmorphism: clean, soft, shadow only, no border! */
+  background: var(--api-macos-bg, rgba(255,255,255,0.7));
+  border-radius: 14px;
+  box-shadow: 0 6px 32px 0 rgba(28,28,28,0.16), 0 1.5px 3px 0 rgba(28,28,30,0.05);
   overflow: hidden;
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
   margin: 1.5rem 0;
-  box-shadow:
-    0 1px 3px rgba(0, 0, 0, 0.1),
-    0 4px 12px rgba(0, 0, 0, 0.08),
-    0 0 0 1px rgba(255, 255, 255, 0.1) inset;
-  backdrop-filter: blur(20px);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
+  animation: fadeUp 0.5s cubic-bezier(.42,0,.58,1);
+  transition: box-shadow 0.2s cubic-bezier(.42,0,.58,1);
 }
 
-.api-card:hover {
-  transform: translateY(-2px);
-  box-shadow:
-    0 4px 8px rgba(0, 0, 0, 0.12),
-    0 8px 24px rgba(0, 0, 0, 0.12),
-    0 0 0 1px rgba(255, 255, 255, 0.15) inset;
+.api-macos-window:hover {
+  box-shadow: 0 12px 36px 0 rgba(28,28,28,0.24), 0 2px 8px 0 rgba(28,28,30,0.09);
 }
 
-.api-card-header {
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.8) 0%,
-    rgba(255, 255, 255, 0.6) 50%,
-    rgba(255, 255, 255, 0.4) 100%
-  );
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  padding: 16px 20px;
+.api-macos-header {
   display: flex;
   align-items: center;
   gap: 12px;
-  position: relative;
-}
-
-.api-card-header::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  padding: 18px 24px 14px 18px;
   background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.1) 0%,
-    rgba(255, 255, 255, 0.05) 100%
+    120deg,
+    rgba(240,241,246,0.60) 0%,
+    rgba(255,255,255,0.35) 100%
   );
-  pointer-events: none;
+  position: relative;
+  z-index: 1;
+  /* visual feedback: soft bottom border only, but ultra subtle */
+  box-shadow: 0 1px 0 0 rgba(28,28,30,0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
-.api-card-buttons {
+.macos-buttons {
   display: flex;
   gap: 8px;
-  position: relative;
-  z-index: 1;
+  margin-right: 8px;
 }
 
-.api-card-button {
-  width: 12px;
-  height: 12px;
+.macos-btn {
+  width: 11px;
+  height: 11px;
   border-radius: 50%;
+  box-shadow: 0 0.5px 1.5px rgba(0,0,0,0.07);
+  border: 0.5px solid rgba(0,0,0,0.04);
+  transition: transform 0.13s cubic-bezier(.42,0,.58,1);
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s ease;
+  cursor: default;
 }
-
-.api-card-button:hover {
-  transform: scale(1.1);
+.macos-btn:hover {
+  transform: scale(1.11);
 }
+.macos-btn-red    { background: linear-gradient(120deg,#fd594b 60%,#ea3323 100%);}
+.macos-btn-yellow { background: linear-gradient(120deg,#fdbd41 60%,#f8e36b 100%);}
+.macos-btn-green  { background: linear-gradient(120deg,#31c150 60%,#28b846 100%);}
 
-.button-inner {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.8);
-  opacity: 0;
-  transition: opacity 0.2s ease;
-}
-
-.api-card-button:hover .button-inner {
-  opacity: 1;
-}
-
-.api-card-button-red {
-  background: linear-gradient(135deg, #ff5f57 0%, #ff4444 100%);
-  box-shadow: 0 1px 2px rgba(255, 95, 87, 0.3);
-}
-
-.api-card-button-yellow {
-  background: linear-gradient(135deg, #ffbd2e 0%, #ffb300 100%);
-  box-shadow: 0 1px 2px rgba(255, 189, 46, 0.3);
-}
-
-.api-card-button-green {
-  background: linear-gradient(135deg, #28ca42 0%, #22c55e 100%);
-  box-shadow: 0 1px 2px rgba(40, 202, 66, 0.3);
-}
-
-.api-card-title {
-  font-size: 13px;
-  color: var(--vp-c-text-1);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+.api-macos-title {
+  font-size: 14px;
+  color: var(--vp-c-text-1, #222);
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
   font-weight: 500;
-  margin-left: 8px;
-  position: relative;
-  z-index: 1;
   letter-spacing: -0.01em;
+  margin-left: 8px;
+  opacity: 0.75;
+  text-shadow: 0 1px 1.5px rgba(255,255,255,0.18);
+  user-select: text;
+  transition: color 0.15s;
 }
 
-.api-card-content {
+/* Content rows */
+.api-macos-content {
   font-family: ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
   font-size: 14px;
-  background: var(--vp-c-bg);
+  background: transparent;
 }
 
-.api-card-item {
+.api-macos-row {
   display: flex;
-  gap: 16px;
-  padding: 14px 20px;
+  gap: 18px;
+  padding: 14px 22px 14px 22px;
   align-items: flex-start;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  border-bottom: 1px solid rgba(40,40,50,0.05);
+  transition: background 0.2s, transform 0.18s cubic-bezier(.42,0,.58,1);
   position: relative;
+  min-height: 36px;
 }
 
-.api-card-item:last-child {
+.api-macos-row:last-child {
   border-bottom: none;
 }
 
-.api-card-item:hover {
-  background: rgba(0, 0, 0, 0.02);
-  transform: translateX(2px);
+.api-macos-row:hover {
+  background: rgba(120,140,255,0.04);
+  transform: translateY(-1.5px) scale(1.01);
 }
 
-.api-card-item::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 3px;
-  background: linear-gradient(180deg, #007AFF 0%, #5856D6 100%);
-  opacity: 0;
-  transition: opacity 0.2s ease;
-}
-
-.api-card-item:hover::before {
-  opacity: 1;
-}
-
-.api-card-key {
+.api-macos-key {
   font-weight: 600;
-  min-width: 140px;
+  min-width: 135px;
   flex-shrink: 0;
   font-size: 13px;
   letter-spacing: -0.01em;
+  user-select: text;
+  font-family: inherit;
 }
+.api-macos-key.blue    { color: #006fff; }
+.api-macos-key.purple  { color: #7158e2; }
+.api-macos-key.pink    { color: #ff2d92; }
+.api-macos-key.red     { color: #ff3b30; }
+.api-macos-key.green   { color: #28b846; }
 
-.api-card-key.blue {
-  color: #007AFF;
-}
-
-.api-card-key.purple {
-  color: #5856D6;
-}
-
-.api-card-key.pink {
-  color: #FF2D92;
-}
-
-.api-card-value {
-  color: var(--vp-c-text-2);
+.api-macos-value {
+  color: var(--vp-c-text-2, #444);
   line-height: 1.6;
   font-size: 13px;
+  user-select: text;
+  font-family: inherit;
 }
 
-/* Dark mode adjustments */
-:root.dark .api-card {
-  background: rgba(28, 28, 30, 0.8);
-  border-color: rgba(255, 255, 255, 0.1);
-  box-shadow:
-    0 1px 3px rgba(0, 0, 0, 0.3),
-    0 4px 12px rgba(0, 0, 0, 0.2),
-    0 0 0 1px rgba(255, 255, 255, 0.05) inset;
-}
-
-:root.dark .api-card:hover {
-  box-shadow:
-    0 4px 8px rgba(0, 0, 0, 0.4),
-    0 8px 24px rgba(0, 0, 0, 0.3),
-    0 0 0 1px rgba(255, 255, 255, 0.08) inset;
-}
-
-:root.dark .api-card-header {
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.1) 0%,
-    rgba(255, 255, 255, 0.05) 50%,
-    rgba(255, 255, 255, 0.02) 100%
-  );
-  border-bottom-color: rgba(255, 255, 255, 0.1);
-}
-
-:root.dark .api-card-item {
-  border-bottom-color: rgba(255, 255, 255, 0.06);
-}
-
-:root.dark .api-card-item:hover {
-  background: rgba(255, 255, 255, 0.03);
-}
-
-:root.dark .api-card-key.blue {
-  color: #0A84FF;
-}
-
-:root.dark .api-card-key.purple {
-  color: #5E5CE6;
-}
-
-:root.dark .api-card-key.pink {
-  color: #FF375F;
-}
-
-/* Animação de entrada */
-@keyframes slideInUp {
+@keyframes fadeUp {
   from {
     opacity: 0;
     transform: translateY(20px);
@@ -285,37 +169,40 @@ defineProps({
   }
 }
 
-.api-card {
-  animation: slideInUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+/* DARK MODE */
+:root.dark .api-macos-window {
+  --api-macos-bg: rgba(32,34,38,0.72);
+  background: var(--api-macos-bg);
+  box-shadow: 0 8px 34px 0 rgba(20,20,22,0.28), 0 2px 8px 0 rgba(20,20,24,0.18);
 }
-
-/* Efeito de glassmorphism para modo claro */
-@media (prefers-color-scheme: light) {
-  .api-card {
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(20px) saturate(180%);
-  }
+:root.dark .api-macos-header {
+  background: linear-gradient(120deg,rgba(38,41,49,0.82) 0%,rgba(26,27,32,0.56) 100%);
+  box-shadow: 0 1px 0 0 rgba(190,190,200,0.035);
 }
+:root.dark .api-macos-title {
+  color: #eee;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.22);
+}
+:root.dark .api-macos-content {
+  background: transparent;
+}
+:root.dark .api-macos-row {
+  border-bottom: 1px solid rgba(220,220,230,0.04);
+}
+:root.dark .api-macos-row:hover {
+  background: rgba(60,80,140,0.06);
+}
+:root.dark .api-macos-key.blue    { color: #0a84ff; }
+:root.dark .api-macos-key.purple  { color: #5e5ce6; }
+:root.dark .api-macos-key.pink    { color: #ff375f; }
+:root.dark .api-macos-key.red     { color: #ff453a; }
+:root.dark .api-macos-key.green   { color: #28cd41; }
 
-/* Responsividade */
+/* Responsive */
 @media (max-width: 768px) {
-  .api-card {
-    margin: 1rem 0;
-    border-radius: 8px;
-  }
-
-  .api-card-header {
-    padding: 12px 16px;
-  }
-
-  .api-card-item {
-    padding: 12px 16px;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .api-card-key {
-    min-width: auto;
-  }
+  .api-macos-window { margin: 1rem 0; border-radius: 9px; }
+  .api-macos-header { padding: 13px 12px 10px 13px; }
+  .api-macos-row { padding: 12px 13px; flex-direction: column; gap: 5px; }
+  .api-macos-key { min-width: auto; }
 }
 </style>

@@ -1,1 +1,0 @@
-import{aq as o}from"./theme.Ctjctau-.js";import{k as t,C as a,z as s,D as l,A as n}from"./framework.C3K8O85p.js";const p=t({__name:"CollectionCookies",setup(r){return(i,e)=>(s(),a(o,null,{title:l(()=>e[0]||(e[0]=[n("Cookies")])),_:1}))}});export{p as default};
